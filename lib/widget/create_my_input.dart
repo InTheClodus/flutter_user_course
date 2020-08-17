@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 
 class CreateMyInput extends StatefulWidget {
@@ -10,12 +11,13 @@ class CreateMyInput extends StatefulWidget {
   final title;
   final String information;
   final String tel;
-  final validator;
+  final Function(String value)validator;
   final IconData msuffixIcon;
   final Color msuffixIconColor;
   final bool isWhethercount;
   final Function(String value) onChange;
-
+  final List<WhitelistingTextInputFormatter> inputFormatters;
+//  final Function(String value)validator;
   const CreateMyInput(
       {Key key,
       this.iconString,
@@ -30,7 +32,7 @@ class CreateMyInput extends StatefulWidget {
       this.msuffixIcon,
       this.msuffixIconColor,
       this.isWhethercount=false,
-      this.onChange})
+      this.onChange,this.inputFormatters})
       : super(key: key);
 
   @override
@@ -100,15 +102,17 @@ class _CreateMyInputState extends State<CreateMyInput> {
                                   width: 0,
                                   height: 0,
                                 )
-                              : Text(
-                                  widget.title,
-                                  textAlign: TextAlign.start,
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: Color(0xff154d7c),
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: "PingFangHKMedium"),
-                                ),
+                              : Container(
+                            child: Text(
+                              widget.title,
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: Color(0xff154d7c),
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: "PingFangHKMedium"),
+                            ),
+                          ),
                           flex: 1,
                         ),
                         new Expanded(
@@ -130,13 +134,14 @@ class _CreateMyInputState extends State<CreateMyInput> {
                       controller: widget.inputController,
                       focusNode: focusNode,
                       onChanged: _onChange,
-                      inputFormatters: widget.isWhethercount == false
+                      inputFormatters: widget.inputFormatters == null
                           ? null
-                          : [WhitelistingTextInputFormatter.digitsOnly],
+                          : widget.inputFormatters,
+                      cursorColor: Colors.amberAccent,
                       decoration: InputDecoration(
                           hintText: widget.placeholder,
                           hintStyle: TextStyle(
-                              fontSize: 12, fontFamily: "PingFangHKRegular"),
+                              fontSize: 12, fontFamily: "PingFangHKRegular",),
                           contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                           //输入框内容部分设置padding，跳转跟icon的对其位置
                           border: InputBorder.none,

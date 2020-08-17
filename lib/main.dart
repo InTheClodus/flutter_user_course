@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_user_course/balance/balance_page.dart';
 import 'package:flutter_user_course/my_course.dart';
 import 'package:flutter_user_course/tuition/sign_tutoria.dart';
 import 'package:flutter_user_course/widget/user_course_card.dart';
@@ -46,6 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text('报名补习'),
                 onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>SignTutoria())),
               ),
+              FlatButton(
+                child: Text('餘額'),
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>BalancePage())),
+              )
             ],
           ),
         ));

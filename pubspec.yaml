@@ -23,10 +23,15 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-    #  计算日期，日期显示需要
+#  计算日期，日期显示需要
   date_utils: ^0.1.0+2
-  calendar_vertical_scroll: ^0.0.5
+#  屏幕适配工具
   flutter_screenutil: ^2.3.0
+#  日历选择插件
+  flutter_cupertino_date_picker: ^1.0.12
+  # 日期轉換
+  date_format: ^1.0.8
+  adobe_xd: ^0.1.4
 dev_dependencies:
   flutter_test:
     sdk: flutter

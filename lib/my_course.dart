@@ -11,6 +11,44 @@ class MyCourse extends StatefulWidget {
 class _MyCourseState extends State<MyCourse> {
   var _indexedStack = 0;
   List<String> tabs=['课程','已完成'];
+//  未完成
+  List<dynamic> listCourse = [];
+//  已完成
+  List<dynamic>listCourseDone=[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listCourse = [
+      {
+        "teaching": true,
+        "image": "https://pic2.zhimg.com/v2-639b49f2f6578eabddc458b84eb3c6a1.jpg",
+        "title": "麵粉花絲帶花綜合課程",
+        "datetime": "2020年2月10日-4月7日(逢星期日 17：30-19：30)",
+        "address": "澳門水坑尾街78號中建商業大廈13樓B座",
+        "process": 60,
+      },
+      {
+        "teaching": false,
+        "image": "https://pic2.zhimg.com/v2-639b49f2f6578eabddc458b84eb3c6a1.jpg",
+        "title": "麵粉花絲帶花綜合課程",
+        "datetime": "2020年2月10日-4月7日(逢星期日 17：30-19：30)",
+        "address": "澳門水坑尾街78號中建商業大廈13樓B座",
+        "process": 0,
+      },
+    ];
+    listCourseDone=[
+      {
+        "teaching": true,
+        "image": "https://pic2.zhimg.com/v2-639b49f2f6578eabddc458b84eb3c6a1.jpg",
+        "title": "麵粉花絲帶花綜合課程",
+        "datetime": "2020年2月10日-4月7日(逢星期日 17：30-19：30)",
+        "address": "澳門水坑尾街78號中建商業大廈13樓B座",
+        "process": 100,
+      },
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController;
@@ -47,8 +85,8 @@ class _MyCourseState extends State<MyCourse> {
                   Expanded(
                     child: TabBarView(
                       children: <Widget>[
-                        CoursePage(),
-                        CoursePage(),
+                        CoursePage(listCourse: listCourse,),
+                        CoursePage(listCourse: listCourseDone,),
                       ],
                     ),
                   ),

@@ -6,7 +6,7 @@ class ProgressWidget extends StatelessWidget {
   int progress = 0;
   String title;
   bool dot;
-  double height = 7;
+  double height = 5;
   double radius = 5;
   num color;
   ProgressWidget({this.progress,this.title,this.dot=false,this.color=0xff93BB24});
@@ -69,8 +69,9 @@ class ProgressWidget extends StatelessWidget {
                   )),
             ),
             dot==true?Container(
-              height: 12,
-              width: 12,
+              height: 10,
+              width: 10,
+              margin: EdgeInsets.only(left: progress==100?107:0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   color: Color(color)

@@ -11,7 +11,8 @@ class MySelect extends StatelessWidget {
   final num unselectedColor;
   final VoidCallback onPressed;
   final double width;
-  const MySelect({Key key, this.title,this.content, this.defalutContent,this.isArrow=true,this.selectedColor=0xff2dc27c,this.unselectedColor=0xff888da6, this.onPressed, this.width}) : super(key: key);
+  final String information;
+  const MySelect({Key key, this.title,this.content, this.defalutContent,this.isArrow=true,this.selectedColor=0xff2dc27c,this.unselectedColor=0xff888da6, this.onPressed, this.width,this.information}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -19,9 +20,36 @@ class MySelect extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(left: 15),
-            child: Text(title,style: TextStyle(color: Color(0xff154d7c),fontSize: 15,fontWeight: FontWeight.w400),),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              new Expanded(
+                child: title == null
+                    ? Container(
+                  width: 0,
+                  height: 0,
+                )
+                    :         Container(
+                  padding: EdgeInsets.only(left: 10),
+                  child: Text(title,style: TextStyle(color: Color(0xff154d7c),fontSize: 15,fontWeight: FontWeight.w400),),
+                ),
+                flex: 1,
+              ),
+              new Expanded(
+                child: information == null
+                    ? Container(
+                  width: 0,
+                  height: 0,
+                )
+                    : Text(
+                  information,
+                  style: TextStyle(color: Color(0xfff25265)),
+                  textAlign: TextAlign.end,
+                ),
+                flex: 1,
+              )
+            ],
           ),
           Container(
             padding: EdgeInsets.only(left: 15,right: 15),
@@ -44,7 +72,7 @@ class MySelect extends StatelessWidget {
                     child: Row(
                       children: <Widget>[
                         new Expanded(
-                          child: content==""?Text(defalutContent,
+                          child: content==""||content==null?Text(defalutContent,
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Color(0xff4b5461),
