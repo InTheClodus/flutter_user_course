@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 import 'package:flutter_user_course/balance/balance_page.dart';
 import 'package:flutter_user_course/my_course.dart';
 import 'package:flutter_user_course/tuition/sign_tutoria.dart';
@@ -31,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),

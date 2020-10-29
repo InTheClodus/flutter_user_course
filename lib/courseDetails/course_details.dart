@@ -9,7 +9,7 @@ class CourseDetails extends StatefulWidget {
 class _CourseDetailsState extends State<CourseDetails> {
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return Container(
       margin: EdgeInsets.all(25),
       alignment: Alignment.topCenter,
@@ -38,8 +38,8 @@ class _CourseDetailsState extends State<CourseDetails> {
           Container(
             alignment: Alignment.center,
             margin: EdgeInsets.only(left: 10, right: 10),
-            height: ScreenUtil().setHeight(50),
-            width: ScreenUtil().setWidth(170),
+            height: ScreenUtil().setHeight(26),
+            width: ScreenUtil().setWidth(75),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(20)),
               color: Color(0xff93BB24),
@@ -47,14 +47,14 @@ class _CourseDetailsState extends State<CourseDetails> {
             child: Text(
               "持教課程",
               style: TextStyle(
-                  color: Colors.white, fontSize: ScreenUtil().setSp(25)),
+                  color: Colors.white, fontSize: ScreenUtil().setSp(13)),
             ),
           ),
           Text(
             '麵粉花絲帶花綜合課程',
             style: TextStyle(
                 color: Color(0xff154D7C),
-                fontSize: ScreenUtil().setSp(30),
+                fontSize: ScreenUtil().setSp(18),
                 fontWeight: FontWeight.w500),
           )
         ],
@@ -86,20 +86,21 @@ class _CourseDetailsState extends State<CourseDetails> {
         children: <Widget>[
           ImageIcon(
             AssetImage(icon),
-            size: 22,
+            size: ScreenUtil().setWidth(20),
             color: Color(0xffFFC82C),
           ),
           Padding(
             padding: EdgeInsets.only(left: 10),
           ),
           Container(
-            width: ScreenUtil().setWidth(500),
+            width: ScreenUtil().setWidth(300),
+            padding: EdgeInsets.only(top: 10),
             alignment: Alignment.centerLeft,
             child: Text(
               text,
               textAlign: TextAlign.left,
               style: TextStyle(
-                  color: Color(0xff9C9C9C), fontSize: ScreenUtil().setSp(30)),
+                  color: Color(0xff9C9C9C), fontSize: ScreenUtil().setSp(13)),
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
             ),
@@ -132,7 +133,7 @@ class _CourseDetailsState extends State<CourseDetails> {
               textAlign: TextAlign.left,
               style: TextStyle(
                   color: Color(0xff93BB24),
-                  fontSize: ScreenUtil().setSp(30),
+                  fontSize: ScreenUtil().setSp(18),
                   fontWeight: FontWeight.w500),
             ),
           ),
@@ -143,7 +144,7 @@ class _CourseDetailsState extends State<CourseDetails> {
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
               color: Color(0xff9C9C9C),
-              fontSize: ScreenUtil().setSp(23)
+              fontSize: ScreenUtil().setSp(13)
             ),
           )
         ],

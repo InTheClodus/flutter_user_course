@@ -9,12 +9,15 @@ import 'package:flutter_user_course/widget/my_select.dart';
 import 'package:flutter_user_course/widget/progress_widget.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
- DateTime dateTime=DateTime.now();
+/*
+ *报名登记页面
+ */
 
+DateTime dateTime=DateTime.now();
 // 最小的可选日期
  String MIN_DATETIME = '1980-01-01';
 //最大可选日期
-  String MAX_DATETIME = formatDate(dateTime, [yyyy,'-',mm,'-',dd]);
+String MAX_DATETIME = formatDate(dateTime, [yyyy,'-',mm,'-',dd]);
 
 class SignTutoria extends StatefulWidget {
   @override
@@ -26,6 +29,7 @@ class _SignTutoriaState extends State<SignTutoria> {
   DateTimePickerLocale _locale = DateTimePickerLocale.zh_cn;
   String _format = 'yyyy-MMMM-dd';
   bool _showTitle = true;
+
 // 弹窗下标
   int selectedValue = 0;
 
@@ -108,7 +112,6 @@ class _SignTutoriaState extends State<SignTutoria> {
     bool isEmail = email.hasMatch(regEmail.text);
     bool school = str.hasMatch(regSchool.text);
     bool isPhone=phone.hasMatch(regPhone.text);
-    print('---$isPhone');
     setState(() {
       name == false ? errName = "* 請填寫正確的姓名" : errName = '';
       isEmail == false ? errEmail = "* 請填寫正確的電子郵箱" : errEmail = '';
@@ -153,28 +156,30 @@ class _SignTutoriaState extends State<SignTutoria> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
         children: <Widget>[
+//          顶部的步骤条
           ArticleSteps(),
           IndexedStack(
             index: _indexStack,
             alignment: Alignment.topCenter,
             children: <Widget>[
+//              填写资料
               Container(
-                width: ScreenUtil().setWidth(750),
-                height: ScreenUtil().setHeight(1134),
+                width: ScreenUtil().setWidth(375),
+                height: ScreenUtil().setHeight(667),
+                margin: EdgeInsets.only(left: 30, right: 30),
                 child: SingleChildScrollView(
-                  child: Container(
-                    margin: EdgeInsets.only(left: 30, right: 30),
-                    child: FillInDataWidget(),
-                  ),
+                  child: FillInDataWidget(),
                 ),
               ),
+//              注册成功
               Container(
                 width: ScreenUtil().setWidth(750),
                 child: RegSucceWidgetPage(),
@@ -210,7 +215,7 @@ class _SignTutoriaState extends State<SignTutoria> {
           ),
           Container(
             alignment: Alignment.center,
-            width: ScreenUtil().setWidth(750),
+            width: ScreenUtil().setWidth(375),
             child: ProgressWidget(
               color: 0xff2D7FC7,
               progress: progre,
@@ -241,7 +246,7 @@ class _SignTutoriaState extends State<SignTutoria> {
             ),
             SizedBox(
               height: 5,
-              width: ScreenUtil().setWidth(200),
+              width: ScreenUtil().setWidth(80),
             ),
             Text(
               title,
@@ -272,7 +277,7 @@ class _SignTutoriaState extends State<SignTutoria> {
           content: regSex,
           information: errSex,
           defalutContent: "選擇報讀學生的性別",
-          onPressed: ()=>_didClickSelectedApplyHoliday('性別'),
+          onPressed: ()=>_didClickSelected('性別'),
         ),
         MySelect(
           title: '生日日期',
@@ -301,7 +306,7 @@ class _SignTutoriaState extends State<SignTutoria> {
           information: errTuition,
           content: regTuition,
           defalutContent: "選擇報讀的補習分社",
-          onPressed: ()=>_didClickSelectedApplyHoliday('補習社'),
+          onPressed: ()=>_didClickSelected('補習社'),
         ),
         CreateMyInput(
           inputController: regSchool,
@@ -315,14 +320,14 @@ class _SignTutoriaState extends State<SignTutoria> {
           information: errGrade,
           content: regGrade,
           defalutContent: "選擇學生報讀的年級",
-          onPressed: ()=>_didClickSelectedApplyHoliday('年級'),
+          onPressed: ()=>_didClickSelected('年級'),
         ),
         Container(
           margin: EdgeInsets.all(10),
           child: Text(
             '* 學生如欲轉補習社，需親臨補習社辦理手續',
             style: TextStyle(
-                fontSize: ScreenUtil().setSp(22), color: Color(0xff7B7B7B)),
+                fontSize: ScreenUtil().setSp(12), color: Color(0xff7B7B7B)),
           ),
         ),
         gradientButton()
@@ -331,10 +336,10 @@ class _SignTutoriaState extends State<SignTutoria> {
   }
 
 //  登記按鈕
-
   Widget gradientButton() {
     return Container(
-      width: 220,
+      width: ScreenUtil().setWidth(200),
+      height: ScreenUtil().setHeight(50),
       margin: EdgeInsets.fromLTRB(10, 15, 10, 10),
       decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -459,7 +464,7 @@ class _SignTutoriaState extends State<SignTutoria> {
   }
 
 // 弹窗
-  void _didClickSelectedApplyHoliday(String type) {
+  void _didClickSelected(String type) {
     selectedValue = 0;
     showCupertinoModalPopup(
         context: context,

@@ -21,7 +21,7 @@ class NoticeItemCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     List<BoxShadow> list = [
       BoxShadow(color: Color(0xffe3e8ed), blurRadius: 5.0, spreadRadius: 2.0),
       BoxShadow(color: Color(0xffe7ebf0), blurRadius: 5.0, spreadRadius: 2.0),
@@ -31,7 +31,7 @@ class NoticeItemCard extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: ScreenUtil().setWidth(750),
+        width: ScreenUtil().setWidth(375),
 //        height: ScreenUtil().setWidth(250),
         padding: EdgeInsets.all(15),
         margin: EdgeInsets.all(15),
@@ -42,8 +42,8 @@ class NoticeItemCard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Container(
-              height: 10,
-              width: 10,
+              height: ScreenUtil().setHeight(12),
+              width: ScreenUtil().setWidth(12),
               decoration: BoxDecoration(
                   color: isDay==true?Color(0xffFFC82C):Color(0xff7897B2),
                   borderRadius: BorderRadius.all(Radius.circular(30))),
@@ -75,17 +75,17 @@ class NoticeItemCard extends StatelessWidget {
             child: Text(
               title,
               style: TextStyle(
-                  color: Color(0xff93BB24), fontSize: ScreenUtil().setSp(30)),
+                  color: Color(0xff93BB24), fontSize: ScreenUtil().setSp(15)),
               textAlign: TextAlign.right,
             ),
           ),
           Container(
-            width: ScreenUtil().setWidth(450),
+            width: ScreenUtil().setWidth(190),
             alignment: Alignment.centerRight,
             child: Text(
               dateTime.month.toString() + "月" + dateTime.day.toString() + "日",
               textAlign: TextAlign.right,
-              style: TextStyle(color: Color(0xff8c8c8c)),
+              style: TextStyle(color: Color(0xff8c8c8c),fontSize: ScreenUtil().setSp(13)),
             ),
           )
         ],
@@ -96,13 +96,13 @@ class NoticeItemCard extends StatelessWidget {
 //  內容部分
   Widget coutentWidget() {
     return Container(
-      width: ScreenUtil().setWidth(550),
+      width: ScreenUtil().setWidth(281),
       alignment: Alignment.centerLeft,
       child: Text(
         content,
         textAlign: TextAlign.left,
         style: TextStyle(
-            color: Color(0xff154D7C), fontSize: ScreenUtil().setSp(25)),
+            color: Color(0xff154D7C), fontSize: ScreenUtil().setSp(12)),
         maxLines: 5,
         overflow: TextOverflow.ellipsis,
       ),

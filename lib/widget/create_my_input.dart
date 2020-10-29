@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/screenutil.dart';
 
 class CreateMyInput extends StatefulWidget {
   final iconString;
@@ -75,7 +76,7 @@ class _CreateMyInputState extends State<CreateMyInput> {
 //      if (widget.information != null) errorText = widget.information('ccc');
 //      print('222');
 //    }
-
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return Container(
       margin: EdgeInsets.fromLTRB(0.0, 15, 0.0, 5),
       child: Row(
@@ -98,7 +99,7 @@ class _CreateMyInputState extends State<CreateMyInput> {
                       children: <Widget>[
                         new Expanded(
                           child: widget.title == null
-                              ? Container(
+                                 ? Container(
                                   width: 0,
                                   height: 0,
                                 )
@@ -107,7 +108,7 @@ class _CreateMyInputState extends State<CreateMyInput> {
                               widget.title,
                               textAlign: TextAlign.start,
                               style: TextStyle(
-                                  fontSize: 15,
+                                  fontSize: ScreenUtil().setSp(12),
                                   color: Color(0xff154d7c),
                                   fontWeight: FontWeight.w400,
                                   fontFamily: "PingFangHKMedium"),
@@ -123,7 +124,8 @@ class _CreateMyInputState extends State<CreateMyInput> {
                           )
                               : Text(
                             widget.information,
-                            style: TextStyle(color: Color(0xfff25265)),
+                            style: TextStyle(color: Color(0xfff25265),
+                              fontSize: ScreenUtil().setSp(12),),
                             textAlign: TextAlign.end,
                           ),
                           flex: 1,
@@ -141,7 +143,7 @@ class _CreateMyInputState extends State<CreateMyInput> {
                       decoration: InputDecoration(
                           hintText: widget.placeholder,
                           hintStyle: TextStyle(
-                              fontSize: 12, fontFamily: "PingFangHKRegular",),
+                              fontSize: ScreenUtil().setSp(13), fontFamily: "PingFangHKRegular",),
                           contentPadding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                           //输入框内容部分设置padding，跳转跟icon的对其位置
                           border: InputBorder.none,

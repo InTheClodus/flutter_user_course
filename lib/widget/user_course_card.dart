@@ -15,11 +15,11 @@ class UserCourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //默认 width : 1080px , height:1920px , allowFontScaling:false
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return InkWell(
       onTap: onPressed,
       child: Container(
-        width: ScreenUtil().setWidth(750),
+        width: ScreenUtil().setWidth(375),
 //        height: ScreenUtil().setWidth(370),
         padding: EdgeInsets.all(10),
         margin: EdgeInsets.all(10),
@@ -51,8 +51,8 @@ class UserCourseCard extends StatelessWidget {
     return Stack(
       children: <Widget>[
         Container(
-            width: ScreenUtil().setWidth(250),
-            height: ScreenUtil().setHeight(280),
+            width: ScreenUtil().setWidth(128),
+            height: ScreenUtil().setHeight(147),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 image: DecorationImage(
@@ -66,12 +66,13 @@ class UserCourseCard extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topRight: Radius.circular(25),
                         bottomRight: Radius.circular(25))),
-                height: 24,
-                width: 71,
+                height: ScreenUtil().setHeight(24),
+                width: ScreenUtil().setWidth(71),
                 child: Text(
                   "持教課程",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white,fontSize: ScreenUtil().setSp(12)),
                   textAlign: TextAlign.center,
+                  
                 ),
               )
             : Container(),
@@ -90,7 +91,7 @@ class UserCourseCard extends StatelessWidget {
             map['title'],
             style: TextStyle(
                 color: Color(0xff154D7C),
-                fontSize: ScreenUtil().setSp(30),
+                fontSize: ScreenUtil().setSp(17),
                 fontWeight: FontWeight.w500),
           ),
           CurseInfoItem(
@@ -117,7 +118,7 @@ class UserCourseCard extends StatelessWidget {
         children: <Widget>[
           ImageIcon(
             AssetImage(icon),
-            size: 22,
+            size: 20,
             color: Color(0xffB9BDC5),
           ),
           Padding(
@@ -131,13 +132,13 @@ class UserCourseCard extends StatelessWidget {
 
   Widget ItemText({@required String title}) {
     return Container(
-      width: ScreenUtil().setWidth(300),
+      width: ScreenUtil().setWidth(161),
       alignment: Alignment.centerLeft,
       child: Text(
         title,
         textAlign: TextAlign.left,
         style: TextStyle(
-            color: Color(0xffB9BDC5), fontSize: ScreenUtil().setSp(25)),
+            color: Color(0xffB9BDC5), fontSize: ScreenUtil().setSp(11)),
         maxLines: 3,
         overflow: TextOverflow.ellipsis,
       ),

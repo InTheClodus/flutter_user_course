@@ -12,7 +12,9 @@ class CourseDetailsTab extends StatefulWidget {
 }
 
 class _CourseDetailsTabState extends State<CourseDetailsTab> {
+
   var _indexedStack = 0;
+
   List<dynamic> tabs = [
     {'title': '課程詳情', 'notice': false},
     {'title': '時間表', 'notice': false},
@@ -22,7 +24,7 @@ class _CourseDetailsTabState extends State<CourseDetailsTab> {
   @override
   Widget build(BuildContext context) {
     TabController _tabController;
-    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: true);
+    ScreenUtil.init(context, width: 375, height: 667, allowFontScaling: true);
     return DefaultTabController(
       length: tabs.length,
       child: Scaffold(
@@ -92,7 +94,7 @@ class _CourseDetailsTabState extends State<CourseDetailsTab> {
         Padding(
           padding: EdgeInsets.only(top: 5),
         ),
-        Text(text)
+        Text(text,style: TextStyle(fontSize: ScreenUtil().setSp(16)),)
       ],
     );
   }
@@ -104,7 +106,7 @@ class _CourseDetailsTabState extends State<CourseDetailsTab> {
           Container(
             padding: EdgeInsets.only(left: 10, top: 10),
             width: double.infinity,
-            height: 110,
+            height: ScreenUtil().setHeight(79),
             decoration: BoxDecoration(
                 color: Color(0xffE5EEF6),
                 borderRadius: BorderRadius.only(
@@ -114,7 +116,7 @@ class _CourseDetailsTabState extends State<CourseDetailsTab> {
           Container(
             padding: EdgeInsets.only(left: 10),
             width: double.infinity,
-            height: 100,
+            height: ScreenUtil().setHeight(69),
             decoration: BoxDecoration(
                 color: Color(0xff2D7FC7),
                 borderRadius: BorderRadius.only(
@@ -136,8 +138,8 @@ class _CourseDetailsTabState extends State<CourseDetailsTab> {
                     title,
                     style: TextStyle(
                         color: Color(0xffffffff),
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
+                        fontSize: ScreenUtil().setSp(15),
+                        ),
                     textAlign: TextAlign.center,
                   ),
                 )
